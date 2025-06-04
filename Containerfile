@@ -262,7 +262,6 @@ RUN --mount=type=cache,dst=/var/cache \
         i2c-tools \
         lm_sensors \
         fw-ectool \
-        fw-fanctrl \
         udica \
         ladspa-caps-plugins \
         ladspa-noise-suppression-for-voice \
@@ -376,9 +375,6 @@ RUN --mount=type=cache,dst=/var/cache \
         libobs_vkcapture.i686 \
         libobs_glcapture.i686 \
         VK_hdr_layer && \
-    dnf5 -y --setopt=install_weak_deps=False install \
-        steam \
-        lutris && \
     dnf5 -y remove \
         gamemode && \
     curl -Lo /tmp/latencyflex.tar.xz $(curl https://api.github.com/repos/ishitatsuyuki/LatencyFleX/releases/latest | jq -r '.assets[] | select(.name| test(".*.tar.xz$")).browser_download_url') && \
@@ -630,7 +626,6 @@ RUN --mount=type=cache,dst=/var/cache \
     systemctl enable brew-setup.service && \
     systemctl disable brew-upgrade.timer && \
     systemctl disable brew-update.timer && \
-    systemctl disable fw-fanctrl.service && \
     systemctl disable scx.service && \
     systemctl disable scx_loader.service && \
     systemctl enable input-remapper.service && \
